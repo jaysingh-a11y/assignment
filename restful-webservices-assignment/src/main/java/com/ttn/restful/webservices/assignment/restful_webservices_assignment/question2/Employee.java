@@ -1,12 +1,16 @@
 package com.ttn.restful.webservices.assignment.restful_webservices_assignment.question2;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
-
+import jakarta.validation.constraints.*;
 
 public class Employee {
+
+    @Min(value=0,message="Id must be greater than or equal to zero")
     private int id;
+    @NotBlank(message="Name cannot blank")
+    @Size(min=3,max=15,message="size should be between 3 to 15 charcters")
     private String name;
     private LocalDate age;
 

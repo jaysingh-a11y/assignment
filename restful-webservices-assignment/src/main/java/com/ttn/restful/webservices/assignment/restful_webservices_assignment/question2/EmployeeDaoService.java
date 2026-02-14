@@ -48,7 +48,7 @@ public class EmployeeDaoService {
         return e;
     }
 
-    public Employee updateEmployee(int id,Employee e ) {
+    public Employee updateEmployee(Employee e,int id  ) {
         Employee newEmp = getById(id);
         newEmp.setName(e.getName());
         newEmp.setAge(e.getAge());

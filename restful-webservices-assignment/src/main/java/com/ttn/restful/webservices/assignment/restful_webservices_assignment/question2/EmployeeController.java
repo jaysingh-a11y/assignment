@@ -1,5 +1,6 @@
 package com.ttn.restful.webservices.assignment.restful_webservices_assignment.question2;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,13 +34,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/users/add")
-    public Employee addEmployee1(@RequestBody Employee e){
+    public Employee addEmployee1(@RequestBody @Valid Employee e){
          service.addEmployee(e);
          return e;
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Employee> addEmployee(@RequestBody Employee e){
+    public ResponseEntity<Employee> addEmployee(@RequestBody @Valid Employee e){
          Employee addedEmployee =service.addEmployee(e);
         URI location= ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -49,9 +50,9 @@ public class EmployeeController {
     }
 
     @PutMapping("/update/{id}")
-    public Employee updateEmp(@PathVariable int id,
-                              @RequestBody Employee e){
-         return service.updateEmployee(id,e);
+    public Employee updateEmp(@RequestBody @Valid Employee e,
+                              @PathVariable int id){
+         return service.updateEmployee(e,id);
     }
 
 
