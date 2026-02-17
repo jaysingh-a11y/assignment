@@ -1,0 +1,181 @@
+Q1
+Create an Employee Entity which contains the following fields: Name, Id, Age, Location
+Q2)
+Set up EmployeeRepository with Spring Data JPA
+Q3)
+Perform Create Operation on Entity using Spring Data JPA
+Q4)
+Perform Update Operation on Entity using Spring Data JPA
+Q5)
+Perform Delete Operation on Entity using Spring Data JPA
+Q6)
+Perform Read Operation on Entity using Spring Data JPA
+Q7)
+Get the total count of the number of Employees
+Q8)
+Implement Pagination and Sorting on the basis of Employee Age
+Q9)
+Create and use finder to find Employee by Name
+Q10)
+Create and use finder to find Employees starting with A character
+Q11)
+Create and use finder to find Employees Between the age of 28 to 32
+
+
+Q1) Create an Employee Entity
+
+Instructions
+
+Create a package named entity.
+
+Create a class Employee inside this package.
+
+Define fields: id, name, age, location.
+
+Mark this class as a database entity.
+
+Configure id as the primary key.
+
+Keep this class only for data representation (no logic).
+
+Q2) Set up EmployeeRepository with Spring Data JPA
+
+Instructions
+
+Create a package named repository.
+
+Create an interface EmployeeRepository.
+
+Extend Spring Data JPA repository interface.
+
+Link the repository with the Employee entity.
+
+Do not add business logic here.
+
+Q3) Perform Create Operation on Entity
+
+Instructions
+
+Create a package named service.
+
+Create an interface EmployeeService.
+
+Create service.impl package and implementation class.
+
+Add a method in service for saving employee.
+
+Call repository save method from service.
+
+Create controller package.
+
+Create EmployeeController.
+
+Expose a POST API to create employee.
+
+Controller must call service layer only.
+
+Q4) Perform Update Operation on Entity
+
+Instructions
+
+Add update method in EmployeeService.
+
+Implement update logic in service implementation.
+
+Use repository to update employee data.
+
+Expose a PUT API in EmployeeController.
+
+Validate employee existence before update.
+
+Q5) Perform Delete Operation on Entity
+
+Instructions
+
+Add delete method in EmployeeService.
+
+Use repository delete functionality.
+
+Expose DELETE API in controller.
+
+Delete employee using employee id.
+
+Handle case when employee does not exist.
+
+Q6) Perform Read Operation on Entity
+
+Instructions
+
+Add read methods in service:
+
+Get all employees
+
+Get employee by id
+
+Use repository find methods.
+
+Expose GET APIs in controller.
+
+Return list or single employee accordingly.
+
+Q7) Get Total Count of Employees
+
+Instructions
+
+Use count functionality of repository.
+
+Add count method in service.
+
+Expose GET API to return total employee count.
+
+Keep logic inside service layer.
+
+Q8) Implement Pagination and Sorting by Age
+
+Instructions
+
+Use Spring Data pagination support in repository.
+
+Add service method accepting page number and size.
+
+Apply sorting based on employee age.
+
+Expose GET API with pagination parameters.
+
+Do not handle pagination logic in controller.
+
+Q9) Finder: Find Employee by Name
+
+Instructions
+
+Define finder method in repository based on name.
+
+Add corresponding service method.
+
+Expose GET API in controller.
+
+Pass name as request parameter or path variable.
+
+Q10) Finder: Find Employees Starting with Character ‘A’
+
+Instructions
+
+Create finder method in repository for name starting with character.
+
+Add service method calling repository finder.
+
+Expose GET API in controller.
+
+Allow passing starting character dynamically.
+
+Q11) Finder: Find Employees Between Age 28 to 32
+
+Instructions
+
+Create finder method in repository for age range.
+
+Add service method for age-between logic.
+
+Expose GET API in controller.
+
+Accept minimum and maximum age as inputs.
