@@ -1,11 +1,12 @@
 package org.ttn.assignment.spring_data_jpa_assignment;
 
+import org.hibernate.query.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.ttn.assignment.spring_data_jpa_assignment.entity.Employee;
 import org.ttn.assignment.spring_data_jpa_assignment.repository.EmployeeRepository;
-
+import org.springframework.data.domain.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ class SpringDataJpaAssignmentApplicationTests {
 
 	@Autowired
 	EmployeeRepository employeeRepository;
+
 	@Test
 	public void createTest(){
 
@@ -191,10 +193,10 @@ class SpringDataJpaAssignmentApplicationTests {
 
 	@Test
 	public void deleteTest(){
-		if(employeeRepository.existsById(15)) {
-			employeeRepository.deleteById(15);
+		if(employeeRepository.existsById(0)) {
+			employeeRepository.deleteById(0);
 		}
-		assertFalse(employeeRepository.existsById(15));
+		assertFalse(employeeRepository.existsById(0));
 
 	}
 
@@ -213,9 +215,27 @@ class SpringDataJpaAssignmentApplicationTests {
 	}
 //Doubt
 	@Test
-	public void paginationAndSortingTest(){
-		long count = employeeRepository.count();
-		assertEquals(20,count);
+	public void paginationTest(){
+		Pageable pageable = PageRequest.of(1,3);
+		Page<Employee> results =employeeRepository.findAll(pageable);
+		results.forEach(a-> System.out.println(a.getId()));
+	}
+
+	@Test
+	public void sortingTest(){
+        Sort sort = Sort.by(Sort.Direction.ASC,"name");
+		List<Employee> results =employeeRepository.findAll(sort);
+		results.forEach(a-> System.out.println(a));
+	}
+
+	@Test
+	public void pagingAndSortingTest(){
+		Sort sort = Sort.by(
+				Sort.Order.desc("name"),
+				Sort.Order.asc("age"));
+		Pageable pageable = PageRequest.of(0,4,sort);
+		Page<Employee> results =employeeRepository.findAll(pageable);
+		results.forEach(a-> System.out.println(a));
 	}
 
 
@@ -235,6 +255,7 @@ class SpringDataJpaAssignmentApplicationTests {
 
 	}
 
+
 	@Test
 	public void findByAgeTest(){
 		List<Employee> empList=employeeRepository.findByAgeBetween(28,32);
@@ -242,6 +263,12 @@ class SpringDataJpaAssignmentApplicationTests {
 		assertNotEquals(12,empList.size());
 
 	}
+
+//	@Test
+//	public void testGetLost(){
+//		Integer lost = employeeRepository.getLost(5);
+//		System.out.println(lost);
+//	}
 
 
 }

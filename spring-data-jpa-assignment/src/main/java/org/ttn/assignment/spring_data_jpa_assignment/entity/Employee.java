@@ -2,6 +2,7 @@ package org.ttn.assignment.spring_data_jpa_assignment.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import org.springframework.stereotype.Component;
 
 @Entity
 public class Employee {
