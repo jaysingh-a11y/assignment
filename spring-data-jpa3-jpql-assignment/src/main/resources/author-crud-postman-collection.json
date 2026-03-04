@@ -1,0 +1,95 @@
+{
+  "info": {
+    "name": "Author Management CRUD APIs",
+    "_postman_id": "f2a9c1d3-9c88-4d47-9a6b-112233445566",
+    "description": "CRUD APIs for Author, Address, Subjects, Books mappings",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Author",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/authors",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["authors"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"New Author\",\n  \"address\": {\n    \"streetNumber\": \"909\",\n    \"location\": \"Bangalore\",\n    \"state\": \"KA\"\n  },\n  \"subjects\": [\n    { \"name\": \"Java\" },\n    { \"name\": \"Spring\" },\n    { \"name\": \"JPA\" }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Get All Authors",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/authors",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["authors"]
+        }
+      }
+    },
+    {
+      "name": "Get Author By ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/authors/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["authors", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Author",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/authors/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["authors", "1"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jay Singh Updated\",\n  \"address\": {\n    \"streetNumber\": \"111\",\n    \"location\": \"Gurgaon\",\n    \"state\": \"HR\"\n  }\n}"
+        }
+      }
+    },
+    {
+      "name": "Delete Author",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/authors/6",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["authors", "6"]
+        }
+      }
+    }
+  ]
+}
